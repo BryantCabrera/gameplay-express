@@ -8,3 +8,14 @@ const Game = require('../models/game');
 /********** MIDDLEWARE **********/
 
 /********** ROUTES **********/
+//Index Route
+router.get('/', async (req, res) => {
+    try {
+        const allUsers = await User.find({});
+
+        return allUsers
+    } catch (err) {
+        res.send(err);
+    }
+});
+
