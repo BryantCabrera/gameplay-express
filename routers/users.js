@@ -16,8 +16,7 @@ router.get('/', async (req, res) => {
 
         res.json({
             status: 200,
-            data: 'Get all users successful.',
-            users: allUsers
+            data: allUsers
         })
     } catch (err) {
         res.send(err);
@@ -37,6 +36,20 @@ router.post('/', async (req, res) => {
         });
         
     } catch (err) {
+        res.send(err);
+    }
+});
+
+// Show Route
+router.get('/:id', async (req, res) => {
+    try {
+        const foundUser = await User.findById(req.params.id);
+        res.json({
+            status: 200,
+            data: foundUser
+        });
+    } catch (err) {
+        console.log(err);
         res.send(err);
     }
 });
