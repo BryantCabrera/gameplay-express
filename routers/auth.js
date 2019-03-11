@@ -25,19 +25,29 @@ router.post('/login', async (req, res) => {
                 req.session.message = '';
                 req.session.logged = true;
 
-                res.json({ loggedUser, isLoggedIn: true });
+                // res.json({ loggedUser, isLoggedIn: true });
+                res.json({
+                    status: 200,
+                    data: 'login successful',
+                    user: loggedUser
+                })
             } else {
-                res.json({ isLoggedIn: false });
+                // res.json({ isLoggedIn: false });
+                res.json({
+                    data: 'The password you entered is incorrect!'
+                })
             }
         } else {
             res.json({
                 status: 200,
-                data: 'login successful',
-                user: loggedUser
+                data: 'That user doesn\'t exist!'
             });
         }
     } catch (err) {
-        res.send(err);
+        res.json({
+            status: 200,
+            data: 'Couldn\'t connect to database.'
+        });
     }
 });
 
