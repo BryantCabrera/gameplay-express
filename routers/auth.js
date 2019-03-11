@@ -25,11 +25,19 @@ router.post('/login', async (req, res) => {
                 req.session.message = '';
                 req.session.logged = true;
 
+                const {_id,username,email,img,games } = loggedUser
+                const responseLoggedUser = {
+                    _id: _id,
+                    username: username,
+                    email: email,
+                    img: img, 
+                    games: games
+                }
                 // res.json({ loggedUser, isLoggedIn: true });
                 res.json({
                     status: 200,
                     data: 'login successful',
-                    user: loggedUser
+                    user: responseLoggedUser
                 })
             } else {
                 // res.json({ isLoggedIn: false });
