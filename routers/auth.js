@@ -8,7 +8,6 @@ const User = require('../models/user');
 /********** MIDDLEWARE **********/
 
 /********** ROUTES **********/
-// login
 // Log-In
 router.post('/login', async (req, res) => {
     try {
@@ -25,7 +24,7 @@ router.post('/login', async (req, res) => {
                 req.session.user = loggedUser;
                 req.session.message = '';
                 req.session.logged = true;
-                
+
                 res.json({ loggedUser, isLoggedIn: true });
             } else {
                 res.json({ isLoggedIn: false });
@@ -42,4 +41,10 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// logout
+
+// Log-Out
+router.get('/logout', (req, res) => {
+    req.session.destroy((err) => err ? res.json(err) : res.json('User successfully logged out.'));
+});
+
+module.exports = router;

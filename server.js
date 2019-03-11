@@ -6,6 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const cors = require('cors');
 
 require('./db/db');
 
@@ -17,6 +18,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(cors());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
