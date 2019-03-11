@@ -26,7 +26,9 @@ router.get('/', async (req, res) => {
 
 //Create Route
 router.post('/', async (req, res) => {
-    let hashedPassword = crypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+    console.log(req.body, 'hitting create user');
+
+    let hashedPassword = await bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     req.body.password = hashedPassword;
     try {
         const createdUser = await User.create(req.body);
