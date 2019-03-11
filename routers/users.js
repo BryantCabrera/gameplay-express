@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
             data: allUsers
         })
     } catch (err) {
+        console.log(err);
         res.send(err);
     }
 });
@@ -36,6 +37,7 @@ router.post('/', async (req, res) => {
         });
         
     } catch (err) {
+        console.log(err);
         res.send(err);
     }
 });
@@ -47,6 +49,20 @@ router.get('/:id', async (req, res) => {
         res.json({
             status: 200,
             data: foundUser
+        });
+    } catch (err) {
+        console.log(err);
+        res.send(err);
+    }
+});
+
+// Update Route
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        res.json({
+            status: 200,
+            data: updatedUser
         });
     } catch (err) {
         console.log(err);
