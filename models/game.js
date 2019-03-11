@@ -7,4 +7,6 @@ const gameSchema = new mongoose.Schema({
     code: String
 });
 
-export default mongoose.model('Game', gameSchema);
+const Game = mongoose.model('Game', gameSchema);
+
+module.exports = Game;
