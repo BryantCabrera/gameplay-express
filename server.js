@@ -21,7 +21,7 @@ app.use(session({
 }));
 
 const corsOptions = {
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://bryant-gameplay-server.herokuapp.com'],
     credentials: true,
     optionsSuccessStatus: 200
 }
