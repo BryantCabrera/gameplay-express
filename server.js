@@ -36,6 +36,9 @@ app.use(express.static('public'));
 /********** ROUTERS/CONTROLLERS **********/
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
+// app.user('/tic-tac-toe', (req, res) => {
+//     res.send(path to index.html)
+// })
 
 /********** LISTENER **********/
 app.listen(process.env.PORT, () => {
